@@ -20,7 +20,7 @@
             position: relative;
         }
 
-        /* KHUNG HIỂN THỊ VIDEO NỀN YOUTUBE */
+        /* KHUNG HIỂN THỊ VIDEO NỀN YOUTUBE ATTACK ON TITAN */
         .video-background {
             position: fixed;
             top: 0; left: 0;
@@ -48,26 +48,7 @@
             z-index: 2;
         }
 
-        #enter-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #050508;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            cursor: pointer;
-            transition: opacity 1s ease;
-        }
-
-        #enter-screen p {
-            font-size: 20px;
-            letter-spacing: 4px;
-            color: #7149e8;
-            text-shadow: 0 0 10px rgba(113, 73, 232, 0.6);
-            animation: blink 1.5s infinite;
-        }
-
+        /* KHUNG BIO CHÍNH HIỂN THỊ LUÔN KHÔNG CẦN CLICK */
         .bio-container {
             background: rgba(10, 10, 15, 0.65);
             padding: 45px 35px;
@@ -78,9 +59,6 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            transform: scale(0.8) translateY(30px);
-            opacity: 0;
-            transition: all 1s ease;
             z-index: 10;
         }
 
@@ -116,7 +94,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* CHỮ ĐỔI MÀU RAINBOW LIÊN TỤC */
+        /* CHỮ ĐỔI MÀU RAINBOW LIÊN TỤC CHẠY TỰ ĐỘNG */
         h1 {
             font-size: 26px;
             font-weight: 700;
@@ -136,7 +114,7 @@
 
         .tagline { font-size: 13px; color: #d1d1e0; margin-bottom: 30px; }
 
-        /* NÚT BẤM VÀ CHỮ TRONG NÚT TỰ ĐỘNG ĐỔI MÀU NEON KHI HOVER */
+        /* ĐỊNH DẠNG NÚT BẤM */
         .social-btn {
             display: flex;
             align-items: center;
@@ -154,53 +132,26 @@
         .social-btn i { font-size: 22px; width: 35px; text-align: left; }
         .social-btn:hover { transform: translateY(-4px); }
         
-        .social-btn.youtube:hover { 
-            background: rgba(255, 0, 0, 0.15); 
-            border-color: #ff0000; 
-            color: #ff4d4d;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); 
-        }
-        .social-btn.facebook:hover { 
-            background: rgba(24, 119, 242, 0.15); 
-            border-color: #1877f2; 
-            color: #4da3ff;
-            box-shadow: 0 0 20px rgba(24, 119, 242, 0.4); 
-        }
-        .social-btn.tiktok:hover { 
-            background: rgba(255, 255, 255, 0.1); 
-            border-color: #fff; 
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); 
-        }
-        .social-btn.discord:hover { 
-            background: rgba(88, 101, 242, 0.15); 
-            border-color: #5865F2; 
-            color: #8592ff;
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); 
-        }
+        .social-btn.youtube:hover { background: rgba(255, 0, 0, 0.15); border-color: #ff0000; color: #ff4d4d; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+        .social-btn.facebook:hover { background: rgba(24, 119, 242, 0.15); border-color: #1877f2; color: #4da3ff; box-shadow: 0 0 20px rgba(24, 119, 242, 0.4); }
+        .social-btn.tiktok:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; color: #fff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+        .social-btn.discord:hover { background: rgba(88, 101, 242, 0.15); border-color: #5865F2; color: #8592ff; box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
 
         .blog-link { display: inline-block; margin-top: 20px; font-size: 13px; color: #d1d1e0; text-decoration: none; transition: color 0.3s; }
         .blog-link:hover { color: #00d2ff; text-shadow: 0 0 8px rgba(0, 210, 255, 0.4); }
-        @keyframes blink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <!-- Màn hình chào [ CLICK TO ENTER ] -->
-    <div id="enter-screen" onclick="startBio()">
-        <p>[ CLICK TO ENTER ]</p>
-    </div>
-
-    <!-- KHUNG TRÌNH CHIẾU VIDEO NỀN YOUTUBE ATTACK ON TITAN -->
+    <!-- VIDEO NỀN YOUTUBE TỰ ĐỘNG CHẠY LUÔN -->
     <div class="video-background">
         <iframe id="embed-video" src="https://youtube.com" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
     <div class="video-overlay"></div>
 
-    <!-- Khung thông tin cá nhân -->
+    <!-- Khung thông tin cá nhân chính thức -->
     <div class="bio-container" id="main-bio">
         <div class="avatar-box">
-            <!-- ĐÃ THAY ĐƯỜNG LINK AVATAR MỚI CỦA BẠN VÀO ĐÂY -->
             <img src="https://r2.dev" alt="Avatar" class="avatar">
         </div>
         <h1>MinhFuryzy 👑</h1>
@@ -222,26 +173,14 @@
         <a href="blog.html" class="blog-link">Xem các bài viết thủ thuật của tôi &rarr;</a>
     </div>
 
-    <!-- Nhạc nền -->
+    <!-- Nhạc nền phát tự động (Cần click chuột bất kỳ đâu trên màn hình sau khi vào trang để kích hoạt âm thanh do chính sách Google) -->
     <audio id="bg-music" src="https://soundhelix.com" loop></audio>
 
     <script>
-        function startBio() {
-            const enterScreen = document.getElementById('enter-screen');
-            enterScreen.style.opacity = '0';
-            setTimeout(() => { enterScreen.style.display = 'none'; }, 1000);
-            
-            const bio = document.getElementById('main-bio');
-            bio.style.opacity = '1';
-            bio.style.transform = 'scale(1) translateY(0)';
-            
-            // Kích hoạt phát video YouTube
-            const iframe = document.getElementById('embed-video');
-            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            
-            // Phát nhạc nền
+        // Tự động phát nhạc khi người dùng click vào bất kỳ vị trí nào trên trang web
+        document.addEventListener('click', function() {
             document.getElementById('bg-music').play().catch(e => console.log("Chặn phát nhạc"));
-        }
+        }, { once: true });
     </script>
 </body>
 </html>
