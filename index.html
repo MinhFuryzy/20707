@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: #0d0d13;
@@ -18,6 +19,8 @@
             overflow: hidden;
             position: relative;
         }
+
+        /* KHUNG HIỂN THỊ VIDEO NỀN YOUTUBE ATTACK ON TITAN */
         .video-background {
             position: fixed;
             top: 0; left: 0;
@@ -27,6 +30,7 @@
             opacity: 0.55;
             overflow: hidden;
         }
+
         .video-background iframe {
             width: 100vw;
             height: 56.25vw;
@@ -36,12 +40,15 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
         }
+
         .video-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(13, 13, 19, 0.45);
             z-index: 2;
         }
+
+        /* KHUNG BIO CHÍNH HIỂN THỊ LUÔN KHÔNG CẦN CLICK */
         .bio-container {
             background: rgba(10, 10, 15, 0.65);
             padding: 45px 35px;
@@ -54,11 +61,13 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
             z-index: 10;
         }
+
         .avatar-box {
             position: relative;
             width: 110px; height: 110px;
             margin: 0 auto 20px auto;
         }
+
         .avatar {
             width: 100%; height: 100%;
             border-radius: 50%;
@@ -67,6 +76,8 @@
             position: relative;
             z-index: 2;
         }
+
+        /* Vòng tròn đổi màu quét quanh Avatar */
         .avatar-box::after {
             content: "";
             position: absolute;
@@ -77,10 +88,13 @@
             animation: rotateGlow 3s linear infinite;
             filter: blur(4px);
         }
+
         @keyframes rotateGlow {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* CHỮ ĐỔI MÀU RAINBOW LIÊN TỤC CHẠY TỰ ĐỘNG */
         h1 {
             font-size: 26px;
             font-weight: 700;
@@ -92,11 +106,15 @@
             animation: rainbowText 4s linear infinite;
             text-shadow: 0 0 15px rgba(113, 73, 232, 0.2);
         }
+
         @keyframes rainbowText {
             0% { background-position: 0% center; }
             100% { background-position: 300% center; }
         }
+
         .tagline { font-size: 13px; color: #d1d1e0; margin-bottom: 30px; }
+
+        /* ĐỊNH DẠNG NÚT BẤM */
         .social-btn {
             display: flex;
             align-items: center;
@@ -110,43 +128,60 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
         }
+
         .social-btn i { font-size: 22px; width: 35px; text-align: left; }
         .social-btn:hover { transform: translateY(-4px); }
+        
         .social-btn.youtube:hover { background: rgba(255, 0, 0, 0.15); border-color: #ff0000; color: #ff4d4d; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
         .social-btn.facebook:hover { background: rgba(24, 119, 242, 0.15); border-color: #1877f2; color: #4da3ff; box-shadow: 0 0 20px rgba(24, 119, 242, 0.4); }
         .social-btn.tiktok:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; color: #fff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
         .social-btn.discord:hover { background: rgba(88, 101, 242, 0.15); border-color: #5865F2; color: #8592ff; box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
+
         .blog-link { display: inline-block; margin-top: 20px; font-size: 13px; color: #d1d1e0; text-decoration: none; transition: color 0.3s; }
         .blog-link:hover { color: #00d2ff; text-shadow: 0 0 8px rgba(0, 210, 255, 0.4); }
     </style>
 </head>
 <body>
+
+    <!-- VIDEO NỀN YOUTUBE TỰ ĐỘNG CHẠY LUÔN -->
     <div class="video-background">
         <iframe id="embed-video" src="https://youtube.com" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
     <div class="video-overlay"></div>
+
+    <!-- Khung thông tin cá nhân chính thức -->
     <div class="bio-container" id="main-bio">
         <div class="avatar-box">
             <img src="https://r2.dev" alt="Avatar" class="avatar">
         </div>
         <h1>MinhFuryzy 👑</h1>
         <p class="tagline">Welcome to my digital space</p>
+
+        <!-- Link YouTube chính chủ của bạn -->
         <a href="https://youtube.com" target="_blank" class="social-btn youtube">
             <i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube Channel
         </a>
+        <!-- Link Facebook chính chủ của bạn -->
         <a href="https://facebook.com" target="_blank" class="social-btn facebook">
             <i class="fab fa-facebook" style="color: #1877f2;"></i> Facebook Profile
         </a>
+        <!-- Link TikTok chính chủ của bạn -->
         <a href="https://tiktok.com" target="_blank" class="social-btn tiktok">
             <i class="fab fa-tiktok" style="color: #fff;"></i> TikTok Videos
         </a>
+        <!-- Link Discord chính chủ của bạn -->
         <a href="https://discord.gg" target="_blank" class="social-btn discord">
             <i class="fab fa-discord" style="color: #5865F2;"></i> Discord Server
         </a>
+
         <a href="blog.html" class="blog-link">Xem các bài viết thủ thuật của tôi &rarr;</a>
     </div>
+
+    <!-- Nhạc nền phát tự động -->
     <audio id="bg-music" src="https://soundhelix.com" loop></audio>
+
     <script>
+        // Tự động phát nhạc khi người dùng click vào bất kỳ vị trí nào trên trang web
         document.addEventListener('click', function() {
             document.getElementById('bg-music').play().catch(e => console.log("Chặn phát nhạc"));
         }, { once: true });
