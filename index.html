@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MinhFuryzy | Bio Link</title>
+    <title>MinhFuryzy | Rainbow Bio</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: #0d0d13;
             color: #fff;
             display: flex;
@@ -16,117 +17,173 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative;
         }
-        #enter-screen {
+
+        /* KHUNG HIỂN THỊ VIDEO NỀN YOUTUBE ATTACK ON TITAN */
+        .video-background {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.55;
+            overflow: hidden;
+        }
+
+        .video-background iframe {
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .video-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #050508;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            cursor: pointer;
-            transition: opacity 0.8s ease;
+            background: rgba(13, 13, 19, 0.45);
+            z-index: 2;
         }
-        #enter-screen p {
-            font-size: 18px;
-            letter-spacing: 2px;
-            animation: blink 1.5s infinite;
-        }
+
+        /* KHUNG BIO CHÍNH HIỂN THỊ LUÔN KHÔNG CẦN CLICK */
         .bio-container {
-            background: rgba(20, 20, 30, 0.6);
-            padding: 40px 30px;
-            border-radius: 20px;
-            width: 380px;
+            background: rgba(10, 10, 15, 0.65);
+            padding: 45px 35px;
+            border-radius: 24px;
+            width: 390px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transform: scale(0.9);
-            opacity: 0;
-            transition: all 0.8s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            z-index: 10;
         }
+
+        .avatar-box {
+            position: relative;
+            width: 110px; height: 110px;
+            margin: 0 auto 20px auto;
+        }
+
         .avatar {
-            width: 100px; height: 100px;
+            width: 100%; height: 100%;
             border-radius: 50%;
-            border: 2px solid #7149e8;
-            box-shadow: 0 0 20px #7149e8;
-            margin-bottom: 15px;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
         }
-        h1 { font-size: 22px; margin-bottom: 5px; color: #fff; text-shadow: 0 0 10px #7149e8; }
-        .tagline { font-size: 14px; color: #8a8a9e; margin-bottom: 25px; }
+
+        /* Vòng tròn đổi màu quét quanh Avatar */
+        .avatar-box::after {
+            content: "";
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff007f, #7149e8, #00d2ff, #ff007f);
+            z-index: 1;
+            animation: rotateGlow 3s linear infinite;
+            filter: blur(4px);
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* CHỮ ĐỔI MÀU RAINBOW LIÊN TỤC CHẠY TỰ ĐỘNG */
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            background: linear-gradient(to right, #ff0055, #7149e8, #00d2ff, #00ffaa, #ff0055);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowText 4s linear infinite;
+            text-shadow: 0 0 15px rgba(113, 73, 232, 0.2);
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
+        }
+
+        .tagline { font-size: 13px; color: #d1d1e0; margin-bottom: 30px; }
+
+        /* ĐỊNH DẠNG NÚT BẤM */
         .social-btn {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+            color: #e1e1e6;
             text-decoration: none;
-            padding: 12px 20px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s ease;
+            padding: 14px 22px;
+            margin-bottom: 14px;
+            border-radius: 16px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
-        .social-btn i { font-size: 20px; width: 30px; text-align: left; }
-        .social-btn:hover {
-            transform: translateY(-3px);
-            background: rgba(113, 73, 232, 0.2);
-            border-color: #7149e8;
-            box-shadow: 0 0 15px rgba(113, 73, 232, 0.4);
-        }
-        .blog-link {
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 13px;
-            color: #7149e8;
-            text-decoration: none;
-        }
-        .blog-link:hover { text-decoration: underline; }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        .social-btn i { font-size: 22px; width: 35px; text-align: left; }
+        .social-btn:hover { transform: translateY(-4px); }
+        
+        .social-btn.youtube:hover { background: rgba(255, 0, 0, 0.15); border-color: #ff0000; color: #ff4d4d; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+        .social-btn.facebook:hover { background: rgba(24, 119, 242, 0.15); border-color: #1877f2; color: #4da3ff; box-shadow: 0 0 20px rgba(24, 119, 242, 0.4); }
+        .social-btn.tiktok:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; color: #fff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+        .social-btn.discord:hover { background: rgba(88, 101, 242, 0.15); border-color: #5865F2; color: #8592ff; box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
+
+        .blog-link { display: inline-block; margin-top: 20px; font-size: 13px; color: #d1d1e0; text-decoration: none; transition: color 0.3s; }
+        .blog-link:hover { color: #00d2ff; text-shadow: 0 0 8px rgba(0, 210, 255, 0.4); }
     </style>
 </head>
 <body>
 
-    <div id="enter-screen" onclick="startBio()">
-        <p>[ CLICK TO ENTER ]</p>
+    <!-- VIDEO NỀN YOUTUBE TỰ ĐỘNG CHẠY LUÔN -->
+    <div class="video-background">
+        <iframe id="embed-video" src="https://youtube.com" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
+    <div class="video-overlay"></div>
 
+    <!-- Khung thông tin cá nhân chính thức -->
     <div class="bio-container" id="main-bio">
-        <img src="https://dicebear.com" alt="Avatar" class="avatar">
+        <div class="avatar-box">
+            <img src="https://r2.dev" alt="Avatar" class="avatar">
+        </div>
         <h1>MinhFuryzy 👑</h1>
         <p class="tagline">Welcome to my digital space</p>
 
-        <!-- Nút YouTube chính chủ -->
-        <a href="https://www.youtube.com/@MinhFuryzy-RBX" target="_blank" class="social-btn">
+        <!-- Link YouTube chính chủ -->
+        <a href="https://youtube.com" target="_blank" class="social-btn youtube">
             <i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube Channel
         </a>
-        <!-- Nút Facebook chính chủ -->
-        <a href="https://www.facebook.com/profile.php?id=61586866439724" target="_blank" class="social-btn">
+        <!-- Link Facebook chính chủ -->
+        <a href="https://facebook.com" target="_blank" class="social-btn facebook">
             <i class="fab fa-facebook" style="color: #1877f2;"></i> Facebook Profile
         </a>
-        <!-- Nút TikTok chính chủ -->
-        <a href="https://www.tiktok.com/@minh.hoang2335" target="_blank" class="social-btn">
+        <!-- Link TikTok chính chủ -->
+        <a href="https://tiktok.com" target="_blank" class="social-btn tiktok">
             <i class="fab fa-tiktok" style="color: #fff;"></i> TikTok Videos
         </a>
-        <!-- Nút Discord chính chủ -->
-        <a href="https://discord.gg/T49eN8uNE" target="_blank" class="social-btn">
+        <!-- Link Discord chính chủ -->
+        <a href="https://discord.gg" target="_blank" class="social-btn discord">
             <i class="fab fa-discord" style="color: #5865F2;"></i> Discord Server
         </a>
 
         <a href="blog.html" class="blog-link">Xem các bài viết thủ thuật của tôi &rarr;</a>
     </div>
 
+    <!-- Nhạc nền phát tự động -->
     <audio id="bg-music" src="https://soundhelix.com" loop></audio>
 
-    <script>
-        function startBio() {
-            document.getElementById('enter-screen').style.opacity = '0';
-            setTimeout(() => { document.getElementById('enter-screen').style.display = 'none'; }, 800);
-            const bio = document.getElementById('main-bio');
-            bio.style.opacity = '1';
-            bio.style.transform = 'scale(1)';
-            document.getElementById('bg-music').play().catch(e => console.log("Chặn tự phát nhạc"));
-        }
+    <script {nonce="strict"}>
+        document.addEventListener('click', function() {
+            document.getElementById('bg-music').play().catch(e => console.log("Chặn phát nhạc"));
+        }, { once: true });
     </script>
 </body>
 </html>
